@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+	span{ font-size:24px;}
+	.box{ width:500px; height:40px; border:1px solid #000; border-radius:20px; margin:0 auto; overflow:hidden; position:relative;}
+	@keyframes test{
+	from{left:0;}
+	to{left:-113px;}
+}
+	#pic{ position:absolute; top:0; left:0; width:1000px; height:100px; background:-webkit-repeating-linear-gradient(-45deg,red 0px, red 10px,#fff 10px, #fff 20px);
+	-webkit-animation:test 1s linear infinite;
+}
+
+</style>
+<script>	
+	window.onload = function(){
+		var oBtn  = document.getElementsByTagName('input');
+		var oSpan = document.getElementsByTagName('span');
+		var oPic = document.getElementById('pic');
+		function setC3Style(){
+			oPic.style.background = '-webkit-repeating-linear-gradient(-45deg,'+oBtn[0].value+' 0px,'+oBtn[0].value+' 10px,'+oBtn[1].value+' 10px,'+oBtn[1].value+' 20px)';
+			oPic.style.background = '-moz-repeating-linear-gradient(-45deg,'+oBtn[0].value+' 0px,'+oBtn[0].value+' 10px,'+oBtn[1].value+' 10px,'+oBtn[1].value+' 20px)';
+			oPic.style.background = '-ms-repeating-linear-gradient(-45deg,'+oBtn[0].value+' 0px,'+oBtn[0].value+' 10px,'+oBtn[1].value+' 10px,'+oBtn[1].value+' 20px)';
+			oPic.style.background = '-o-repeating-linear-gradient(-45deg,'+oBtn[0].value+' 0px,'+oBtn[0].value+' 10px,'+oBtn[1].value+' 10px,'+oBtn[1].value+' 20px)';	
+			oPic.style.background = 'repeating-linear-gradient(-45deg,'+oBtn[0].value+' 0px,'+oBtn[0].value+' 10px,'+oBtn[1].value+' 10px,'+oBtn[1].value+' 20px)';
+		}
+		oSpan[0].style.color = oBtn[0].value;
+		oSpan[1].style.color = oBtn[1].value;
+		setC3Style();
+		function btnColer(i){
+			oBtn[i].onchange = function(){
+				oSpan[i].innerHTML = this.value;	
+				oSpan[i].style.color = this.value;
+				setC3Style();
+			};
+		};
+		btnColer(0);
+		btnColer(1);
+	};
+</script>
+</head>
+
+<body>
+	<div>颜色：<input type="color" value="#00ff00" />&nbsp;<input type="color" value="#ffff80" /></div>
+    &nbsp;&nbsp;<span>#00ff00</span>&nbsp;<span>#ffff80</span>
+    <div class="box">
+    	<div id="pic"></div>
+    </div>
+</body>
+</html>
